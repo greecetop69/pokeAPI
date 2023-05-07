@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@features/pokedex": [
+        "libs/features/pokedex/src/index.ts"
+      ],
+      "@core/api": ["libs/core/api/src/index.ts"],
+      "@features/github": ["libs/features/github/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

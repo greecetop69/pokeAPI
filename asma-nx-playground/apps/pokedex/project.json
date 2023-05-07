@@ -1,0 +1,82 @@
+{
+  "name": "pokedex",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pokedex/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/pokedex",
+        "configFile": "libs/my-app/vite.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "pokedex:build",
+        "configFile": "libs/my-app/vite.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pokedex:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "pokedex:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "pokedex:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pokedex:build:development"
+        },
+        "production": {
+          "buildTarget": "pokedex:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/pokedex"],
+      "options": {
+        "command": "run",
+        "vitestConfig": "libs/my-app/vitest.config.ts",
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/pokedex"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pokedex/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "pokedex:build"
+      }
+    }
+  },
+  "tags": []
+}
